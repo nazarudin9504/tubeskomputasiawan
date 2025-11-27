@@ -8,20 +8,19 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // Tampilkan semua user
     public function index()
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        $users = User::orderBy('id', 'asc')->get();
+        $totalUsers = User::count();
+
+        return view('users.index', compact('users', 'totalUsers'));
     }
 
-    // Tampilkan form tambah
     public function create()
     {
         return view('users.create');
     }
 
-    // Simpan user baru
     public function store(Request $request)
     {
         $request->validate([
@@ -36,17 +35,15 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan.');
     }
 
-    // Tampilkan form edit
     public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
     }
 
-    // Update data user
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -66,15 +63,14 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User berhasil diupdate.');
     }
 
-    // Hapus user
     public function destroy($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
     }
 }
