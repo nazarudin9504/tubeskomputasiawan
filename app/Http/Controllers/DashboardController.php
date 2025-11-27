@@ -10,6 +10,6 @@ class DashboardController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'desc')->paginate(10);
-        return view('dashboard', compact('users'));
+        return view('dashboard', compact('users')); 
     }
 }
