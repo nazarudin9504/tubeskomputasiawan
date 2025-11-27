@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,9 @@ Route::get('/', function () {
 });
 
 // dashboard hanya bisa diakses setelah login & email verified
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 // semua route user hanya bisa diakses user yang sudah login
 Route::middleware('auth')->group(function () {
@@ -41,5 +42,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
 
-// jika pakai Breeze/Jetstream, pastikan baris ini tetap ada di bawah:
+// kalau pakai Breeze/Jetstream
 require __DIR__.'/auth.php';

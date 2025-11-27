@@ -15,13 +15,23 @@
                 </div>
             </div>
 
+            {{-- kartu jumlah akun --}}
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h3 class="text-lg font-semibold">Total Akun User</h3>
+                    <p class="mt-1 text-2xl font-bold">
+                        {{ $totalUsers ?? 0 }}
+                    </p>
+                </div>
+            </div>
+
             {{-- alternatif tombol kelola akun --}}
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 space-y-3">
                     <h3 class="text-lg font-semibold">Kelola Akun</h3>
 
                     <div class="flex flex-wrap gap-3">
-                        {{-- Lihat daftar akun + jumlah --}}
+                        {{-- Lihat daftar akun + edit + hapus --}}
                         <a href="{{ route('users.index') }}"
                            class="px-4 py-2 bg-blue-600 text-white rounded-md text-sm">
                             Lihat & Kelola Semua Akun
@@ -35,7 +45,7 @@
                     </div>
 
                     <p class="text-sm text-gray-500 mt-2">
-                        Edit dan hapus akun bisa dilakukan di halaman "Lihat & Kelola Semua Akun".
+                        Di halaman "Lihat & Kelola Semua Akun" kamu bisa edit dan hapus akun.
                     </p>
                 </div>
             </div>
