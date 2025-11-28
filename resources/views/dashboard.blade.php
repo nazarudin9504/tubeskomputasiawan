@@ -28,7 +28,7 @@
             {{-- alternatif tombol kelola akun --}}
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 space-y-3">
-                    <h3 class="text-lg font-semibold">Kelola Akun</h3>
+                    <h3 class="text-lg font-semibold">Kelola User</h3>
 
                     <div class="flex flex-wrap gap-3">
                         {{-- Lihat daftar akun + edit + hapus --}}
